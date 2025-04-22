@@ -1,0 +1,65 @@
+--- Taille = 1000 ---
+Seuil: 1, Temps moyen: 0.092352 sec
+Seuil: 6, Temps moyen: 0.035770 sec
+Seuil: 11, Temps moyen: 0.026136 sec
+Seuil: 16, Temps moyen: 0.020876 sec
+Seuil: 21, Temps moyen: 0.021484 sec
+Seuil: 26, Temps moyen: 0.020990 sec
+Seuil: 31, Temps moyen: 0.018964 sec
+Seuil: 36, Temps moyen: 0.018018 sec
+Seuil: 41, Temps moyen: 0.018210 sec
+Seuil: 46, Temps moyen: 0.018508 sec
+Seuil: 51, Temps moyen: 0.018090 sec
+Seuil: 56, Temps moyen: 0.018232 sec
+Seuil: 61, Temps moyen: 0.018240 sec
+Seuil: 66, Temps moyen: 0.017081 sec
+Seuil: 71, Temps moyen: 0.016749 sec
+Seuil: 76, Temps moyen: 0.017114 sec
+Seuil: 81, Temps moyen: 0.016912 sec
+Seuil: 86, Temps moyen: 0.017232 sec
+Seuil: 91, Temps moyen: 0.017330 sec
+Seuil: 96, Temps moyen: 0.017143 sec
+
+--- Taille = 2000 ---
+Seuil: 1, Temps moyen: 0.368270 sec
+Seuil: 6, Temps moyen: 0.143679 sec
+Seuil: 11, Temps moyen: 0.105055 sec
+Seuil: 16, Temps moyen: 0.083201 sec
+Seuil: 21, Temps moyen: 0.084567 sec
+Seuil: 26, Temps moyen: 0.083941 sec
+Seuil: 31, Temps moyen: 0.077424 sec
+Seuil: 36, Temps moyen: 0.073300 sec
+Seuil: 41, Temps moyen: 0.074575 sec
+Seuil: 46, Temps moyen: 0.074427 sec
+Seuil: 51, Temps moyen: 0.073942 sec
+Seuil: 56, Temps moyen: 0.074082 sec
+Seuil: 61, Temps moyen: 0.073441 sec
+Seuil: 66, Temps moyen: 0.068367 sec
+Seuil: 71, Temps moyen: 0.069349 sec
+Seuil: 76, Temps moyen: 0.069220 sec
+Seuil: 81, Temps moyen: 0.067847 sec
+Seuil: 86, Temps moyen: 0.070117 sec
+Seuil: 91, Temps moyen: 0.069955 sec
+Seuil: 96, Temps moyen: 0.068957 sec
+
+--- Taille = 5000 ---
+Seuil: 1, Temps moyen: 2.390510 sec
+Seuil: 6, Temps moyen: 0.809068 sec
+Seuil: 11, Temps moyen: 0.602881 sec
+Seuil: 16, Temps moyen: 0.595759 sec
+Seuil: 21, Temps moyen: 0.496321 sec
+Seuil: 26, Temps moyen: 0.504347 sec
+Seuil: 31, Temps moyen: 0.506561 sec
+Seuil: 36, Temps moyen: 0.497607 sec
+Seuil: 41, Temps moyen: 0.451256 sec
+Seuil: 46, Temps moyen: 0.466835 sec
+Seuil: 51, Temps moyen: 0.456695 sec
+Seuil: 56, Temps moyen: 0.449386 sec
+Seuil: 61, Temps moyen: 0.451532 sec
+Seuil: 66, Temps moyen: 0.449474 sec
+Seuil: 71, Temps moyen: 0.449415 sec
+Seuil: 76, Temps moyen: 0.456326 sec
+Seuil: 81, Temps moyen: 0.432004 sec
+Seuil: 86, Temps moyen: 0.425397 sec
+Seuil: 91, Temps moyen: 0.428546 sec
+Seuil: 96, Temps moyen: 0.427717 sec

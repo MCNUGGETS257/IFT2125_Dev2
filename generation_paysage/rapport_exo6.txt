@@ -1,0 +1,66 @@
+
+
+### 1. Génération de couleur (fonction `get_color_from_shade` dans `generateur_paysage.py`)
+
+La représentation visuelle du relief repose sur une fonction qui associe une couleur à chaque cellule en fonction de sa hauteur normalisée (`shade`). On distingue :
+
+- Océan : un dégradé de bleu foncé (profondeur maximale) à bleu clair (proche des côtes).
+- Terre : une transition continue de vert (plaine) à brun (colline), puis à blanc (neige/sommet).
+
+Pour éviter des erreurs d'affichage dans OpenSCAD, chaque valeur RGB est comprise entre 0.0 et 1.0 au moyen de la finction `clampe(shade)`.
+
+---
+
+### 2. Bruit de Perlin (fichier `generateur_paysage.py`)
+
+Le relief est perturbé de manière réaliste grâce à du bruit de Perlin :
+
+- La fonction noise2D(x, y) génère un bruit cohérent localement, assurant des transitions douces.
+- Le bruit est appliqué par perlin(array), en combinant plusieurs octaves (Fractal Brownian Motion) pour enrichir les détails.
+
+Ce procédé évite les formes artificielles ou trop lisses.
+
+---
+
+### 3. Modélisation polyhédrique 3D (fonction `polyhedral`)
+
+Chaque case de la carte est convertie en un bloc 3D (type voxel) :
+
+- 4 sommets en haut, 4 en bas (z=0), 12 faces triangulées
+- Chaque bloc a une couleur propre, déterminée par sa hauteur
+
+Ce style est compatible avec OpenSCAD et permet un rendu structuré mais fluide, surtout après lissage.
+
+---
+### 4. Lissage avec noyau gaussien (fonctions kernel et blur)
+
+Le lissage permet de supprimer les irrégularités  et d'obtenir un relief plus doux et réaliste. Il repose sur deux étapes principales :
+
+1. Génération du noyau gaussien :
+
+La fonction `kernel(size, sigma)` crée une matrice symétrique où les valeurs sont plus fortes au centre et décroissent avec la distance. Cela correspond à une courbe en cloche appliquée en 2D. Par exemple :
+
+[ [0.003, 0.013, 0.021, 0.013, 0.003],
+  [0.013, 0.059, 0.097, 0.059, 0.013],
+  [0.021, 0.097, 0.159, 0.097, 0.021],
+  [0.013, 0.059, 0.097, 0.059, 0.013],
+  [0.003, 0.013, 0.021, 0.013, 0.003] ]
+
+2. Application du flou :
+
+Chaque point de la carte de hauteur est remplacé par une moyenne pondérée des hauteurs voisines, en utilisant les valeurs du noyau comme coefficients. Cela permet d’adoucir les transitions trop nettes.
+
+Illustration :
+
+Avant lissage (vue simplifiée d’un relief abrupt) :
+[10, 10, 10]
+[10, 50, 10]
+[10, 10, 10]
+
+Après lissage (valeurs adoucies autour du pic) :
+[13, 17, 13]
+[17, 22, 17]
+[13, 17, 13]
+
+On observe que le pic central est réparti autour de ses voisins, créant une pente progressive.
+

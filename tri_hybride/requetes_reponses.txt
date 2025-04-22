@@ -1,0 +1,42 @@
+--Requête/Reponse 1--
+comment tester un seuil optimal pour deux algorithmes donne moi une approche:
+Pour tester un seuil optimal entre deux algorithmes dans une approche expérimentale et rigoureuse:
+Tu veux identifier, parmi plusieurs seuils possibles, lequel permet de basculer efficacement entre deux algorithmes (ex: merge sort ↔ insertion sort) afin d’obtenir le meilleur temps d’exécution sur ton ordinateur.
+
+1. Choisir les paramètres expérimentaux
+Plage de seuils à tester : par exemple seuils = range(1, 100, 5)
+
+Taille(s) du tableau à trier : n = 1000, 5000, 10000, etc.
+
+Nombre de répétitions par seuil : pour lisser les fluctuations (ex: 5 à 10 essais).
+
+Type de données : tableaux aléatoires, partiellement triés, inversés… (tu peux faire une moyenne sur plusieurs types aussi).
+
+import random, time, statistics
+2. Approche de test:
+def generate_array(size, mode="random"):
+    if mode == "random":
+        return [random.randint(0, 10000) for _ in range(size)]
+    elif mode == "sorted":
+        return list(range(size))
+    elif mode == "reversed":
+        return list(range(size, 0, -1))
+
+def evaluate_threshold(hybrid_sort, threshold, size, num_trials=5):
+    times = []
+    for _ in range(num_trials):
+        arr = generate_array(size)
+        start = time.perf_counter()
+        hybrid_sort(arr.copy(), threshold)
+        end = time.perf_counter()
+        times.append(end - start)
+    return statistics.mean(times)
+3. Mesurer et collecter les performances
+Crée un tableau des résultats pour chaque seuil :
+thresholds = range(1, 51)
+results = []
+
+for t in thresholds:
+    avg_time = evaluate_threshold(hybrid_merge_sort, t, size=5000)
+    results.append((t, avg_time))
+
