@@ -1,5 +1,5 @@
 --Requête/Reponse 1--
-comment tester un seuil optimal pour deux algorithmes donne moi une approche:
+comment tester un seuil optimal pour deux algorithmes de tri (inserion sort et merge sort ) donne moi une approche:
 Pour tester un seuil optimal entre deux algorithmes dans une approche expérimentale et rigoureuse:
 Tu veux identifier, parmi plusieurs seuils possibles, lequel permet de basculer efficacement entre deux algorithmes (ex: merge sort ↔ insertion sort) afin d’obtenir le meilleur temps d’exécution sur ton ordinateur.
 

@@ -59,30 +59,30 @@ def TriFusionHybride(T, d, f, seuil):
         TriFusionHybride(T, d, m, seuil)
         TriFusionHybride(T, m + 1, f, seuil)
         Fusion(T, d, m, f)
+'''
+#Fonction pour determiner expérimentalement le seuil optimal
+def evaluate_seuil(seuil,size,num_trials):
+    times = []
+    for _ in range(num_trials):
+        arr = [random.randint(0, 10000) for _ in range(size)]
+        start = time.perf_counter()
+        TriFusionHybride(arr.copy(),0,len(arr)-1, seuil)
+        end = time.perf_counter()
+        times.append(end - start)
+    return statistics.mean(times)
+seuils = range(1, 200, 5)  # seuils à tester
+sizes = [100,500,1000, 2000, 5000]
 
-    # Fonction pour determiner le seuil optimal
-    def evaluate_seuil(seuil,size,num_trials):
-        times = []
-        for _ in range(num_trials):
-            arr = [random.randint(0, 10000) for _ in range(size)]
-            start = time.perf_counter()
-            TriFusionHybride(arr.copy(),0,len(arr)-1, seuil)
-            end = time.perf_counter()
-            times.append(end - start)
-        return statistics.mean(times)
-    seuils = range(1, 100, 5)  # seuils à tester
-    sizes = [1000, 2000, 5000]
-
-    for size in sizes:
-        print(f"\n--- Taille = {size} ---")
-        for seuil in seuils:
-            avg_time = evaluate_seuil(seuil,size,5)
-            print(f"Seuil: {seuil}, Temps moyen: {avg_time:.6f} sec")
-
+for size in sizes:
+    print(f"\n--- Taille = {size} ---")
+    for seuil in seuils:
+        avg_time = evaluate_seuil(seuil,size,5)
+        print(f"Seuil: {seuil}, Temps moyen: {avg_time:.6f} sec")
+'''
 
 # Fonction à compléter / function to complete:
 def solve(array):
-    seuil = 90  # seuil déterminé expérimentalement 
+    seuil = 181  # seuil déterminé expérimentalement 
     TriFusionHybride(array, 0, len(array) - 1, seuil)
     return array
 # Ne pas modifier le code ci-dessous :
