@@ -1,13 +1,25 @@
 
 # Nom(s) étudiant(s) / Name(s) of student(s):
+# Ndikumasabo, Ratzi-Chris (20266205)
+# Islam, Hudaa Bint Afzal (20278949)
 
-import random
-import statistics
 import sys
-import time
 
 # Espace pour fonctions auxillaires :
 # Space for auxilary functions :
+
+# pour les tests de performances
+def merge_sort(arr, d, f):
+    if d < f:
+        m = (d + f) // 2
+
+        # Recursively sort the left and right halves
+        merge_sort(arr, d, m)
+        merge_sort(arr, m + 1, f)
+
+        # Merge the sorted halves
+        fusion(arr, d, m, f)
+
 def insertion_sort(arr):
     for i in range(1, len(arr)):
         key = arr[i]
@@ -17,74 +29,53 @@ def insertion_sort(arr):
             j -= 1
         arr[j + 1] = key
 
-
-
 # Fusion de deux sous-tableaux
-def Fusion(T, d, m, f):
+def fusion(arr, d, m, f):
     G = []
     D = []
     for i in range(m - d + 1):
-        G.append(T[d + i])
+        G.append(arr[d + i])
     for j in range(f - m):
-        D.append(T[m + 1 + j])
+        D.append(arr[m + 1 + j])
 
     i = j = 0
     k = d
 
     while i < len(G) and j < len(D):
         if G[i] <= D[j]:
-            T[k] = G[i]
+            arr[k] = G[i]
             i += 1
         else:
-            T[k] = D[j]
+            arr[k] = D[j]
             j += 1
         k += 1
 
     while i < len(G):
-        T[k] = G[i]
+        arr[k] = G[i]
         i += 1
         k += 1
 
     while j < len(D):
-        T[k] = D[j]
+        arr[k] = D[j]
         j += 1
         k += 1
 
 # Tri fusion hybride
-def TriFusionHybride(T, d, f, seuil):
+def hybrid_merge_sort(arr, d, f, seuil):
     if f - d + 1 <= seuil:
-        insertion_sort(T)
+        insertion_sort(arr)
     else:
         m = (d + f) // 2
-        TriFusionHybride(T, d, m, seuil)
-        TriFusionHybride(T, m + 1, f, seuil)
-        Fusion(T, d, m, f)
-'''
-#Fonction pour determiner expérimentalement le seuil optimal
-def evaluate_seuil(seuil,size,num_trials):
-    times = []
-    for _ in range(num_trials):
-        arr = [random.randint(0, 10000) for _ in range(size)]
-        start = time.perf_counter()
-        TriFusionHybride(arr.copy(),0,len(arr)-1, seuil)
-        end = time.perf_counter()
-        times.append(end - start)
-    return statistics.mean(times)
-seuils = range(1, 200, 5)  # seuils à tester
-sizes = [100,500,1000, 2000, 5000]
-
-for size in sizes:
-    print(f"\n--- Taille = {size} ---")
-    for seuil in seuils:
-        avg_time = evaluate_seuil(seuil,size,5)
-        print(f"Seuil: {seuil}, Temps moyen: {avg_time:.6f} sec")
-'''
+        hybrid_merge_sort(arr, d, m, seuil)
+        hybrid_merge_sort(arr, m + 1, f, seuil)
+        fusion(arr, d, m, f)
 
 # Fonction à compléter / function to complete:
-def solve(array):
-    seuil = 181  # seuil déterminé expérimentalement 
-    TriFusionHybride(array, 0, len(array) - 1, seuil)
+def solve(array) :
+    seuil = 120  # seuil déterminé expérimentalement 
+    merge_sort(array, 0, len(array) - 1)
     return array
+
 # Ne pas modifier le code ci-dessous :
 # Do not modify the code below :
 
